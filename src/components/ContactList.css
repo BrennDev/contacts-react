@@ -1,0 +1,54 @@
+/* Tabla */
+table {
+    width: 100%;
+    margin: var(--table-margin);
+    font-size: var(--font-size-header);
+    text-align: left;
+    border-collapse: collapse;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+  
+  th {
+    color: var(--color-header-text);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  tr {
+    transition: background-color var(--transition-speed) ease;
+  }
+  
+  tr:nth-child(even) {
+    background-color: var(--color-even-row-bg);
+  }
+  
+  tr:hover {
+    background-color: var(--color-hover-bg);
+  }
+  
+  td {
+    padding: 8px;
+    vertical-align: middle;
+  }
+  
+  .avatar-img,
+  .initial-circle {
+    width: var(--spinner-size);
+    height: var(--spinner-size);
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 8px;
+  }
+  
+  .avatar-cell {
+    width: 10%;
+  }
+  
+  .nameCell,
+  .emailCell,
+  .companyCell,
+  .jobCell {
+    width: 20%;
+  }
+  
