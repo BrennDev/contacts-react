@@ -6,12 +6,14 @@ class ContactForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      company: '',
-      email: '',
+      contact: {
+        company: '',
+        email: '',
+        first_name: '',
+        job_title: '',
+        last_name: '',
+      },
       errorMessage: null,
-      first_name: '',
-      job_title: '',
-      last_name: '',
       isFormValid: false,
       isLoading: false,
     };

@@ -8,13 +8,6 @@ class App extends Component {
     this.state = {
       contacts: [],
       showForm: false,
-      newContactData: {
-        company: '',
-        email: '',
-        first_name: '',
-        job_title: '',
-        last_name: '',
-      },
     };
   }
 
