@@ -1,14 +1,30 @@
+import React, { Component } from 'react';
+import ContactList from './components/ContactList';
+import { fetchUsers } from './api/getContacts';
 
-import ContactList from './components/ContactList'; 
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contacts: [],
+    };
+  }
 
-function App() {
-  const apiUrl = 'https://reqres.in/api/users?delay=4'; 
+  componentDidMount() {
+    fetchUsers().then((users) => {
+      this.setState({ contacts: users });
+    });
+  }
 
-  return (
-    <div className="App">
-      <ContactList apiUrl={apiUrl} />
-    </div>
-  );
+  render() {
+    const { contacts } = this.state;
+
+    return (
+      <div className="App">
+        <ContactList users={contacts} />
+      </div>
+    );
+  }
 }
 
 export default App;
