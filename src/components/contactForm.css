@@ -1,10 +1,10 @@
 .main-container {
-  width: 90%;
+  align-items: center;
   background-color: var(--white-color);
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  width: 90%;
 }
 
 .contact-form {
@@ -19,9 +19,9 @@
 }
 
 .input-group {
-  width: var(--width-input-group);
   display: flex;
   flex-direction: column;
+  width: var(--width-input-group);
 }
 
 .label-style {
@@ -31,8 +31,8 @@
 }
 
 .required::after {
-  content: ' *';
   color: red;
+  content: ' *';
 }
 
 .input-select-style {
@@ -40,9 +40,9 @@
   border-width: var(--input-border-width);
   font-size: var(--font-size-18px);
   height: var(--input-height);
+  margin-bottom: 16px;
   margin-top: var(--input-margin-top);
   padding: var(--input-padding);
-  margin-bottom: 16px;
 }
 
 .save-button {
@@ -63,7 +63,7 @@
 
 .save-button button:disabled {
   background-color: var(--disabled-bg-color);
-  color: #9d9d9d;
+  color: #757474;
 
   &:hover {
     background-color: var(--disabled-bg-color);
@@ -78,14 +78,14 @@
 .error-message {
   color: red;
   margin-top: 10px;
-  text-align: center;
   margin: 20px 0;
+  text-align: center;
 }
 
 .material-icons {
+  color: #747775;
   font-size: 24px;
   margin-right: 10px;
-  color: #747775;
   padding-top: 35px;
 }
 

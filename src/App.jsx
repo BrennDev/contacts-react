@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import ContactForm from './components/ContactForm';
 import { submitContact } from './api/submitContact';
+import ContactForm from './components/ContactForm';
 
 class App extends Component {
   constructor(props) {
@@ -8,6 +8,13 @@ class App extends Component {
     this.state = {
       contacts: [],
       showForm: false,
+      newContactData: {
+        company: '',
+        email: '',
+        first_name: '',
+        job_title: '',
+        last_name: '',
+      },
     };
   }
 
@@ -41,7 +48,11 @@ class App extends Component {
           {showForm ? 'Hide Form' : 'Create Contact'}
         </button>
         {showForm && (
-          <ContactForm submitContact={submitContact} onContactCreated={this.handleContactCreated} />
+          <ContactForm
+            submitContact={submitContact}
+            onContactCreated={this.handleContactCreated}
+            newContactData={this.state.newContactData}
+          />
         )}
       </div>
     );
