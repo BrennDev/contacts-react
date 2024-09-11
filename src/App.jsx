@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Component } from 'react';
+import { submitContact } from './api/submitContact';
+import ContactForm from './components/ContactForm';
 
-function App() {
-  const [count, setCount] = useState(0)
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contacts: [],
+      showForm: false,
+    };
+  }
 
-  return (
-    <>
+  handleContactCreated = (newContact) => {
+    this.setState((prevState) => ({
+      contacts: [...prevState.contacts, newContact],
+      showForm: false,
+    }));
+  };
+
+  toggleForm = () => {
+    this.setState((prevState) => ({
+      showForm: !prevState.showForm,
+    }));
+  };
+
+  render() {
+    const { contacts, showForm } = this.state;
+
+    return (
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <h2>Contacts</h2>
+        <ul>
+          {contacts.map((contact, index) => (
+            <li key={index}>
+              {contact.first_name} {contact.last_name} - {contact.company}
+            </li>
+          ))}
+        </ul>
+        <button onClick={this.toggleForm} className="button-style">
+          {showForm ? 'Hide Form' : 'Create Contact'}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        {showForm && (
+          <ContactForm
+            submitContact={submitContact}
+            onContactCreated={this.handleContactCreated}
+            newContactData={this.state.newContactData}
+          />
+        )}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    );
+  }
 }
 
-export default App
+export default App;
