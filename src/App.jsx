@@ -6,13 +6,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contacts: [],
+      contacts: [], // Estado inicial con contacts
     };
   }
 
   componentDidMount() {
-    fetchUsers().then((users) => {
-      this.setState({ contacts: users });
+    fetchUsers().then((contacts) => {
+      this.setState({ contacts }); // Actualiza el estado con contacts
     });
   }
 
@@ -21,7 +21,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <ContactList users={contacts} />
+        <ContactList contacts={contacts} /> 
       </div>
     );
   }

@@ -24,7 +24,7 @@ class ContactList extends Component {
   };
 
   render() {
-    const { users } = this.props;
+    const { contacts } = this.props;
 
     return (
       <div>
@@ -38,7 +38,7 @@ class ContactList extends Component {
               <th>Job Title</th>
             </tr>
           </thead>
-          <tbody>{users.map((user) => this.createUserRow(user))}</tbody>
+          <tbody>{contacts.map((contact) => this.createUserRow(contact))}</tbody>
         </table>
       </div>
     );
@@ -46,7 +46,7 @@ class ContactList extends Component {
 }
 
 ContactList.propTypes = {
-  users: PropTypes.arrayOf(
+  contacts: PropTypes.arrayOf(
     PropTypes.shape({
       first_name: PropTypes.string.isRequired,
       last_name: PropTypes.string.isRequired,
