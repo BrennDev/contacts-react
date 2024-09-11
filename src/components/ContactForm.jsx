@@ -21,11 +21,19 @@ class ContactForm extends Component {
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value }, this.updateButtonState);
+    this.setState(
+      (prevState) => ({
+        contact: {
+          ...prevState.contact,
+          [name]: value,
+        },
+      }),
+      this.updateButtonState,
+    );
   };
 
   validateForm = () => {
-    const { first_name, last_name, email } = this.state;
+    const { first_name, last_name, email } = this.state.contact;
     return first_name && last_name && email;
   };
 
@@ -45,7 +53,7 @@ class ContactForm extends Component {
       return;
     }
 
-    const { first_name, last_name, company, job_title, email } = this.state;
+    const { first_name, last_name, company, job_title, email } = this.state.contact;
     const newContact = { first_name, last_name, company, job_title, email };
 
     this.props
@@ -68,12 +76,14 @@ class ContactForm extends Component {
   clearForm = () => {
     this.setState(
       {
-        company: '',
-        email: '',
-        first_name: '',
+        contact: {
+          company: '',
+          email: '',
+          first_name: '',
+          job_title: '',
+          last_name: '',
+        },
         isFormValid: false,
-        job_title: '',
-        last_name: '',
       },
       this.updateButtonState,
     );
@@ -81,14 +91,10 @@ class ContactForm extends Component {
 
   render() {
     const {
-      company,
-      email,
+      contact: { company, email, first_name, job_title, last_name },
       errorMessage,
-      first_name,
       isFormValid,
       isLoading,
-      job_title,
-      last_name,
     } = this.state;
 
     return (
