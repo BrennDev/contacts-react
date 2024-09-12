@@ -8,8 +8,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contacts: [], 
-      showForm: false,  
+      contacts: [],
+      showForm: false,
     };
   }
 
@@ -21,7 +21,7 @@ class App extends Component {
 
   handleContactCreated = (newContact) => {
     this.setState((prevState) => ({
-      contacts: [...prevState.contacts, newContact], 
+      contacts: [...prevState.contacts, newContact],
       showForm: false,
     }));
   };
@@ -42,10 +42,7 @@ class App extends Component {
           {showForm ? 'Hide Form' : 'Create Contact'}
         </button>
         {showForm && (
-          <ContactForm
-            submitContact={submitContact}
-            onContactCreated={this.handleContactCreated}
-          />
+          <ContactForm submitContact={submitContact} onContactCreated={this.handleContactCreated} />
         )}
       </div>
     );
