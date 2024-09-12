@@ -1,4 +1,6 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
+import ContactList from './components/ContactList';
+import { fetchContacts } from './api/getContacts';
 import { submitContact } from './api/submitContact';
 import ContactForm from './components/ContactForm';
 
@@ -9,6 +11,12 @@ class App extends Component {
       contacts: [],
       showForm: false,
     };
+  }
+
+  componentDidMount() {
+    fetchContacts().then((contacts) => {
+      this.setState({ contacts });
+    });
   }
 
   handleContactCreated = (newContact) => {
@@ -28,24 +36,13 @@ class App extends Component {
     const { contacts, showForm } = this.state;
 
     return (
-      <div>
-        <h2>Contacts</h2>
-        <ul>
-          {contacts.map((contact, index) => (
-            <li key={index}>
-              {contact.first_name} {contact.last_name} - {contact.company}
-            </li>
-          ))}
-        </ul>
+      <div className="App">
+        <ContactList contacts={contacts} />
         <button onClick={this.toggleForm} className="button-style">
           {showForm ? 'Hide Form' : 'Create Contact'}
         </button>
         {showForm && (
-          <ContactForm
-            submitContact={submitContact}
-            onContactCreated={this.handleContactCreated}
-            newContactData={this.state.newContactData}
-          />
+          <ContactForm submitContact={submitContact} onContactCreated={this.handleContactCreated} />
         )}
       </div>
     );
