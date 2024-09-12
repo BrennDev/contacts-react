@@ -1,4 +1,4 @@
-export const fetchUsers = () => {
+export const fetchContacts = () => {
   const apiUrl = 'https://reqres.in/api/users?delay=4';
 
   return fetch(apiUrl)
@@ -12,7 +12,7 @@ export const fetchUsers = () => {
       return data.data;
     })
     .catch((error) => {
-      console.error('Error fetching users:', error);
+      console.error('Error fetching contacts:', error);
       return [];
     });
 };

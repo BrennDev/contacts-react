@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './ContactList.css';
 
 class ContactList extends Component {
-  createUserRow = (contact) => {
+  createContactRow = (contact) => {
     const { first_name, last_name, email, avatar, company, job_title } = contact;
 
     return (
@@ -38,7 +38,7 @@ class ContactList extends Component {
               <th>Job Title</th>
             </tr>
           </thead>
-          <tbody>{contacts.map((contact) => this.createUserRow(contact))}</tbody>
+          <tbody>{contacts.map((contact) => this.createContactRow(contact))}</tbody>
         </table>
       </div>
     );

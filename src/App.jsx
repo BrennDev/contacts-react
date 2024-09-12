@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import ContactList from './components/ContactList';
-import { fetchUsers } from './api/getContacts';
+import { fetchContacts } from './api/getContacts';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contacts: [], // Estado inicial con contacts
+      contacts: [],
     };
   }
 
   componentDidMount() {
-    fetchUsers().then((contacts) => {
-      this.setState({ contacts }); // Actualiza el estado con contacts
+    fetchContacts().then((contacts) => {
+      this.setState({ contacts }); 
     });
   }
 
