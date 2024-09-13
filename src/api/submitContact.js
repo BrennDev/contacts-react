@@ -9,14 +9,9 @@ export const submitContact = async (contactData) => {
       body: JSON.stringify(contactData),
     });
 
-    if (!response.ok) {
-      throw new Error('Error al crear el contacto');
-    }
-
     const result = await response.json();
     return result;
   } catch (error) {
-    console.error('Error en el POST:', error);
     throw error;
   }
 };

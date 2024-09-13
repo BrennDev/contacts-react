@@ -1,6 +1,7 @@
 import './ContactForm.css';
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import ErrorMessage from './ErrorMessage';
 
 class ContactForm extends Component {
   constructor(props) {
@@ -13,10 +14,16 @@ class ContactForm extends Component {
         job_title: '',
         last_name: '',
       },
-      errorMessage: null,
+      error: null,
       isFormValid: false,
       isLoading: false,
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.error !== this.props.error && !this.props.error) {
+      this.clearForm();
+    }
   }
 
   handleInputChange = (e) => {
@@ -43,11 +50,11 @@ class ContactForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({ isLoading: true, errorMessage: null });
+    this.setState({ isLoading: true, error: null });
 
     if (!this.validateForm()) {
       this.setState({
-        errorMessage: 'Please fill in all required fields.',
+        error: 'Please fill in all required fields.',
         isLoading: false,
       });
       return;
@@ -62,9 +69,9 @@ class ContactForm extends Component {
         this.props.onContactCreated(createdContact);
         this.clearForm();
       })
-      .catch(() => {
+      .catch((error) => {
         this.setState({
-          errorMessage: 'Error creating contact',
+          error: 'Error creating contact',
           isLoading: false,
         });
       })
@@ -89,10 +96,14 @@ class ContactForm extends Component {
     );
   };
 
+  handleCloseError = () => {
+    this.setState({ error: null }, this.clearForm);
+  };
+
   render() {
     const {
       contact: { company, email, first_name, job_title, last_name },
-      errorMessage,
+      error,
       isFormValid,
       isLoading,
     } = this.state;
@@ -100,8 +111,8 @@ class ContactForm extends Component {
     return (
       <div className="main-container">
         <h2 className="title-form">Create Contact</h2>
+        {error && <ErrorMessage error={error} onClose={this.handleCloseError} />}
         <form className="contact-form" onSubmit={this.handleSubmit}>
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
           <div className="section">
             <span className="material-icons">person</span>
             <div className="input-group">
@@ -178,6 +189,7 @@ ContactForm.propTypes = {
     job_title: PropTypes.string,
     last_name: PropTypes.string.isRequired,
   }),
+  error: PropTypes.string,
 };
 
 export default ContactForm;

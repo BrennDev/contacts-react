@@ -10,9 +10,5 @@ export const fetchContacts = () => {
     })
     .then((data) => {
       return data.data;
-    })
-    .catch((error) => {
-      console.error('Error fetching contacts:', error);
-      return [];
     });
 };
