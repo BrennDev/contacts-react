@@ -1,6 +1,7 @@
 import './ContactForm.css';
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import ErrorMessage from './ErrorMessage';
 
 class ContactForm extends Component {
   constructor(props) {
@@ -13,10 +14,16 @@ class ContactForm extends Component {
         job_title: '',
         last_name: '',
       },
-      errorMessage: null,
+      error: null,
       isFormValid: false,
       isLoading: false,
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.error !== this.props.error && !this.props.error) {
+      this.clearForm();
+    }
   }
 
   handleInputChange = (e) => {
@@ -43,11 +50,11 @@ class ContactForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({ isLoading: true, errorMessage: null });
+    this.setState({ isLoading: true, error: null });
 
     if (!this.validateForm()) {
       this.setState({
-        errorMessage: 'Please fill in all required fields.',
+        error: 'Please fill in all required fields.',
         isLoading: false,
       });
       return;
@@ -62,9 +69,9 @@ class ContactForm extends Component {
         this.props.onContactCreated(createdContact);
         this.clearForm();
       })
-      .catch(() => {
+      .catch((error) => {
         this.setState({
-          errorMessage: 'Error creating contact',
+          error: 'Error creating contact',
           isLoading: false,
         });
       })
@@ -89,10 +96,14 @@ class ContactForm extends Component {
     );
   };
 
+  handleCloseError = () => {
+    this.setState({ error: null }, this.clearForm);
+  };
+
   render() {
     const {
       contact: { company, email, first_name, job_title, last_name },
-      errorMessage,
+      error,
       isFormValid,
       isLoading,
     } = this.state;
@@ -100,12 +111,14 @@ class ContactForm extends Component {
     return (
       <div className="main-container">
         <h2 className="title-form">Create Contact</h2>
+        {error && <ErrorMessage error={error} onClose={this.handleCloseError} />}
         <form className="contact-form" onSubmit={this.handleSubmit}>
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
           <div className="section">
             <span className="material-icons">person</span>
             <div className="input-group">
-              <label className={`label-style required`}>First Name</label>
+              <label htmlFor="first_name" className={`label-style required`}>
+                First Name
+              </label>
               <input
                 className="input-select-style"
                 name="first_name"
@@ -113,7 +126,9 @@ class ContactForm extends Component {
                 type="text"
                 value={first_name}
               />
-              <label className={`label-style required`}>Last Name</label>
+              <label htmlFor="last_name" className={`label-style required`}>
+                Last Name
+              </label>
               <input
                 className="input-select-style"
                 name="last_name"
@@ -126,7 +141,9 @@ class ContactForm extends Component {
           <div className="section">
             <span className="material-icons">business</span>
             <div className="input-group">
-              <label className="label-style">Company</label>
+              <label htmlFor="company" className="label-style">
+                Company
+              </label>
               <input
                 className="input-select-style"
                 name="company"
@@ -134,7 +151,9 @@ class ContactForm extends Component {
                 type="text"
                 value={company}
               />
-              <label className="label-style">Job Title</label>
+              <label htmlFor="job_title" className="label-style">
+                Job Title
+              </label>
               <input
                 className="input-select-style"
                 name="job_title"
@@ -147,7 +166,9 @@ class ContactForm extends Component {
           <div className="section">
             <span className="material-icons">email</span>
             <div className="input-group">
-              <label className={`label-style required`}>Email</label>
+              <label htmlFor="email" className={`label-style required`}>
+                Email
+              </label>
               <input
                 className="input-select-style"
                 name="email"
@@ -178,6 +199,7 @@ ContactForm.propTypes = {
     job_title: PropTypes.string,
     last_name: PropTypes.string.isRequired,
   }),
+  error: PropTypes.string,
 };
 
 export default ContactForm;
