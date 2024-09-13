@@ -9,6 +9,10 @@ export const submitContact = async (contactData) => {
       body: JSON.stringify(contactData),
     });
 
+    if (!response.ok) {
+      throw new Error('Error creating contact');
+    }
+
     const result = await response.json();
     return result;
   } catch (error) {

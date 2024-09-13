@@ -116,7 +116,9 @@ class ContactForm extends Component {
           <div className="section">
             <span className="material-icons">person</span>
             <div className="input-group">
-              <label className={`label-style required`}>First Name</label>
+              <label htmlFor="first_name" className={`label-style required`}>
+                First Name
+              </label>
               <input
                 className="input-select-style"
                 name="first_name"
@@ -124,7 +126,9 @@ class ContactForm extends Component {
                 type="text"
                 value={first_name}
               />
-              <label className={`label-style required`}>Last Name</label>
+              <label htmlFor="last_name" className={`label-style required`}>
+                Last Name
+              </label>
               <input
                 className="input-select-style"
                 name="last_name"
@@ -137,7 +141,9 @@ class ContactForm extends Component {
           <div className="section">
             <span className="material-icons">business</span>
             <div className="input-group">
-              <label className="label-style">Company</label>
+              <label htmlFor="company" className="label-style">
+                Company
+              </label>
               <input
                 className="input-select-style"
                 name="company"
@@ -145,7 +151,9 @@ class ContactForm extends Component {
                 type="text"
                 value={company}
               />
-              <label className="label-style">Job Title</label>
+              <label htmlFor="job_title" className="label-style">
+                Job Title
+              </label>
               <input
                 className="input-select-style"
                 name="job_title"
@@ -158,7 +166,9 @@ class ContactForm extends Component {
           <div className="section">
             <span className="material-icons">email</span>
             <div className="input-group">
-              <label className={`label-style required`}>Email</label>
+              <label htmlFor="email" className={`label-style required`}>
+                Email
+              </label>
               <input
                 className="input-select-style"
                 name="email"
