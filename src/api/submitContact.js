@@ -1,5 +1,5 @@
 export const submitContact = async (contactData) => {
-  const url = 'https://reqres.in/api/users?delay=4';
+  const url = 'https://reqres.in/api/users?delay=1';
   try {
     const response = await fetch(url, {
       method: 'POST',
