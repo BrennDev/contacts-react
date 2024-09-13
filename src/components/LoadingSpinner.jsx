@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import './LoadingSpinner.css';
+import PropTypes from 'prop-types';
 
 class LoadingSpinner extends Component {
   render() {
@@ -12,5 +13,9 @@ class LoadingSpinner extends Component {
     );
   }
 }
+
+LoadingSpinner.propTypes = {
+  message: PropTypes.string,
+};
 
 export default LoadingSpinner;
