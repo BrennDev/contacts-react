@@ -28,7 +28,7 @@ class ContactList extends Component {
     const { contacts } = this.props;
 
     return (
-      <div>
+      <div className="contact-container">
         <table id="user-list">
           <thead>
             <tr>
