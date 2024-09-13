@@ -1,5 +1,5 @@
 export const fetchContacts = () => {
-  const apiUrl = 'https://reqres.in/api/users?delay=4';
+  const apiUrl = 'https://reqres.in/api/users?delay=2';
 
   return fetch(apiUrl)
     .then((res) => {
