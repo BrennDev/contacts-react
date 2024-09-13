@@ -1,5 +1,5 @@
 table {
-  background-color: var(--bg-color-table);
+  background-color: var(--white-color);
   border-collapse: collapse;
   border-radius: var(--border-radius);
   border-spacing: 0;
@@ -18,7 +18,7 @@ td {
 
 th {
   background-color: var(--bg-color-th);
-  color: var(--font-color-th);
+  color: var(--white-color);
   font-size: var(--font-size-th);
   font-weight: var(--font-weight-th);
   letter-spacing: var(--letter-spacing-th);
@@ -29,9 +29,7 @@ tr {
   transition: background-color var(--transition-duration) ease;
 }
 
-tr:nth-child(even) {
-  background-color: var(--bg-color-row-even);
-}
+
 
 tr:hover {
   background-color: var(--bg-color-row-hover);

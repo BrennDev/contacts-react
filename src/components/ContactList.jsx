@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ContactList.css';
-import InitialCircle from './InitialCircle'; // Importar el nuevo componente
+import InitialCircle from './InitialCircle';
 
 class ContactList extends Component {
   createContactRow = (contact) => {
@@ -45,6 +45,8 @@ class ContactList extends Component {
     );
   }
 }
+
+
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
