@@ -1,13 +1,13 @@
 .contact-container {
+  align-items: center;
+  background-color: var(--white-color);
+  border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  background-color: var(--white-color);
-  width: 100%;
   margin: 0 auto;
   padding: 20px;
-  border-radius: var(--border-radius);
+  width: 100%;
 }
 
 table {
@@ -62,16 +62,16 @@ td {
 
 .avatar-img,
 .initial-circle {
+  align-items: center;
   border-radius: 50%;
   border: 2px solid var(--border-color-avatar);
+  display: flex;
+  font-size: calc(var(--avatar-size) / 2);
   height: var(--avatar-size);
-  width: var(--avatar-size);
+  justify-content: center;
   margin-right: var(--avatar-margin-right);
   object-fit: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: calc(var(--avatar-size) / 2);
+  width: var(--avatar-size);
 }
 
 .initial-circle {
