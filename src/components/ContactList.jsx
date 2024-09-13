@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ContactList.css';
+import InitialCircle from './InitialCircle'; // Importar el nuevo componente
 
 class ContactList extends Component {
   createContactRow = (contact) => {
@@ -12,7 +13,7 @@ class ContactList extends Component {
           {avatar ? (
             <img src={avatar} alt={`${first_name} ${last_name}`} className="avatar-img" />
           ) : (
-            `${first_name} ${last_name}`
+            <InitialCircle firstName={first_name} />
           )}
         </td>
         <td>{`${first_name} ${last_name}`}</td>

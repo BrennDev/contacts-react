@@ -50,13 +50,25 @@ td {
   width: 10%;
 }
 
-.avatar-img {
+.avatar-img,
+.initial-circle {
   border-radius: 50%;
   border: 2px solid var(--border-color-avatar);
   height: var(--avatar-size);
+  width: var(--avatar-size);
   margin-right: var(--avatar-margin-right);
   object-fit: cover;
-  width: var(--avatar-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--avatar-size) / 2);
+}
+
+.initial-circle {
+  color: var(--bg-color-table);
+  font-weight: bold;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 table,
