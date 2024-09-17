@@ -1,6 +1,8 @@
 .main-container {
   align-items: center;
   background-color: var(--white-color);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,7 +11,7 @@
 
 .contact-form {
   margin: 50px 0;
-  width: 100%;
+  width: 90%;
 }
 
 .section {
@@ -48,7 +50,7 @@
 .save-button {
   display: flex;
   justify-content: right;
-  width: 90%;
+  width: 100%;
 }
 
 .save-button button {
@@ -86,7 +88,7 @@
   color: #747775;
   font-size: 24px;
   margin-right: 10px;
-  padding-top: 35px;
+  padding-top: 50px;
 }
 
 .button-style {
@@ -97,7 +99,10 @@
   color: #001d35;
   cursor: pointer;
   font-size: var(--font-size-16px);
+  margin-bottom: 15px;
+  margin-top: 15px;
   padding: var(--padding-button);
+  text-align: right;
 }
 
 .button-hover:hover {

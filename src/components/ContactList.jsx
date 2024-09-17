@@ -8,7 +8,7 @@ class ContactList extends Component {
     const { first_name, last_name, email, avatar, company, job_title } = contact;
 
     return (
-      <tr key={email}>
+      <tr key={email} className="no-hover">
         <td className="avatar-cell">
           {avatar ? (
             <img src={avatar} alt={`${first_name} ${last_name}`} className="avatar-img" />
@@ -28,7 +28,8 @@ class ContactList extends Component {
     const { contacts } = this.props;
 
     return (
-      <div className="contact-container">
+      <div className="main-container">
+        <h2>Contacts</h2>
         <table id="user-list">
           <thead>
             <tr>
@@ -45,8 +46,6 @@ class ContactList extends Component {
     );
   }
 }
-
-
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(

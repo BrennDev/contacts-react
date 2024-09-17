@@ -71,9 +71,11 @@ class App extends Component {
           <>
             <ErrorMessage error={error} onClose={this.closeErrorMessage} />
             <ContactList contacts={contacts} />
-            <button onClick={this.toggleForm} className="button-style">
-              {showForm ? 'Hide Form' : 'Create Contact'}
-            </button>
+            <div className="button-aline">
+              <button onClick={this.toggleForm} className="button-style">
+                {showForm ? 'Hide Form' : 'Create Contact'}
+              </button>
+            </div>
             {showForm && (
               <ContactForm
                 submitContact={submitContact}

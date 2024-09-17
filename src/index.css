@@ -1,19 +1,16 @@
 :root {
   --avatar-margin-right: 10px;
   --avatar-size: 40px;
-  --bg-color-row-even: #f4f4f4;
   --bg-color-row-hover: #e0f7fa;
-  --bg-color-table: #f9f9f9;
-  --bg-color-th: #e0e0e0;
   --border-color-avatar: #ddd;
   --border-radius: 10px;
   --bottom-primary-color-hover: #1565c0;
   --bottom-primary-color: #1976d2;
   --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --container-width: 90%;
   --disabled-bg-color: #c2c2c2;
-  --font-color-th: #333;
+  --font-family: 'Roboto', sans-serif;
   --font-size-16px: 16px;
-  --font-size-base: 16px;
   --font-size-th: 14px;
   --font-weight-th: 600;
   --group-label-height: 24px;
@@ -36,5 +33,28 @@
 body {
   background-color: var(--color-background);
   font-family: var(--font-family);
+  margin: 0;
+}
+
+.App {
+  align-items: center;
+  background-color: var(--white-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+}
+
+.button-aline {
+  display: flex;
+  justify-content: right;
+  width: var(--container-width);
+  margin: 20px 0;
+}
+
+h2 {
   margin: 0;
 }
