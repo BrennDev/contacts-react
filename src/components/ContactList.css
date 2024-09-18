@@ -71,7 +71,7 @@ td {
 }
 
 .initial-circle {
-  color: var(--bg-color-table);
+  color: var(--white-color);
   font-weight: bold;
   padding-right: 15px;
   padding-left: 15px;
