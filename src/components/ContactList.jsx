@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ContactList.css';
+import InitialCircle from './InitialCircle';
 
 class ContactList extends Component {
   createContactRow = (contact) => {
     const { first_name, last_name, email, avatar, company, job_title } = contact;
 
     return (
-      <tr key={email}>
+      <tr key={email} className="no-hover">
         <td className="avatar-cell">
           {avatar ? (
             <img src={avatar} alt={`${first_name} ${last_name}`} className="avatar-img" />
           ) : (
-            `${first_name} ${last_name}`
+            <InitialCircle firstName={first_name} />
           )}
         </td>
         <td>{`${first_name} ${last_name}`}</td>
@@ -27,7 +28,8 @@ class ContactList extends Component {
     const { contacts } = this.props;
 
     return (
-      <div>
+      <div className="main-container">
+        <h2>Contacts</h2>
         <table id="user-list">
           <thead>
             <tr>
